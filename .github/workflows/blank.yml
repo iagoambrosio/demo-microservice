@@ -22,11 +22,20 @@ jobs:
           logout: true
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Docker meta
+        id: docker_meta
+        uses: crazy-max/ghaction-docker-meta@v1
+        with:
+          images: l7r7/sample
+          tag-custom: latest
+          tag-semver: |
+            {{raw}}
       -
         name: Build and push
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: iago0silva/api:1.0
           context: .
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          labels: ${{ steps.docker_meta.outputs.labels }}
           file: Dockerfile.api
