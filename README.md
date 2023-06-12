@@ -7,4 +7,3 @@ separados por domínios bem designados, para isso, utilizaremos diversas tecnolo
 - Argocd: para deploy das aplicações (CD) conforme os hooks do ci
 - Dockerhub: Repositório de imagens das nossas aplicações
 - gihub actions: Ferramenta que utilizaremos para a esteira de CI
-- 
