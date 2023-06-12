@@ -25,19 +25,19 @@ jobs:
           logout: true
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-      - name: Docker meta
-        id: docker_meta
-        uses: crazy-max/ghaction-docker-meta@v1
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: l7r7/sample
-          tag-custom: latest
-          tag-semver: |
-            {{raw}}
+          images: iago0silva/api
       -
         name: Build and push
         uses: docker/build-push-action@v4
         with:
           push: true
           context: .
+          file: ./Dockerfile
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+          
+          
