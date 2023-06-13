@@ -8,4 +8,4 @@ separados por domínios bem designados, para isso, utilizaremos diversas tecnolo
 - Dockerhub: Repositório de imagens das nossas aplicações
 - gihub actions: Ferramenta que utilizaremos para a esteira de CI
 
-v0.0.1
+v0.0.1-1
