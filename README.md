@@ -8,4 +8,9 @@ separados por domínios bem designados, para isso, utilizaremos diversas tecnolo
 - Dockerhub: Repositório de imagens das nossas aplicações
 - gihub actions: Ferramenta que utilizaremos para a esteira de CI
 
+para deploy automatizado:
+
+git tag -a <v*> -m "mensagem para a tag" 
+git push origin <tagname>
+
 v0.0.1-2
