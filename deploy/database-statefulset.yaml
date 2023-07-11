@@ -1,22 +1,23 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   labels:
-    app: api
-  name: api
+    app: mysql
+  name: mysql
   namespace: api
 spec:
+  serviceName: "mysql-database"
   replicas: 1
   selector:
     matchLabels:
-      app: api
+      app: mysql
   template:
     metadata:
       labels:
-        app: api
+        app: mysql
     spec:
       containers:
-      - image: node:18.12.1-alpine3.17
-        name: node
+      - image: mysql:8.0.33
+        name: mysqld
         ports:
-        - containerPort: 3000
+        - containerPort: 3306
