@@ -1,0 +1,29 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:8.0.33
+    hostname: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysqladmin
+      - MYSQL_USER=nodeapi
+      - MYSQL_PASSWORD=uadareu1234437
+      - MYSQL_DATABASE=api_db
+    ports:
+      - 3306:3306
+    networks:
+      - api
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./api/app:/home/node/app
+    environment:
+      - ENV=dev
+    ports:
+      - 3000:3000
+    networks:
+      - api
+networks:
+  api:
+    driver: bridge  

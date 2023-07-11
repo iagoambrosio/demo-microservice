@@ -1,16 +1,19 @@
 {
-    "name": "api",
-    "version": "1.0.0",
-    "description": "",
-    "main": "server.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "node ./server.js"
-    },
-    "author": "Iago Silva Ambrosio",
-    "license": "ISC",
-    "dependencies": {
-      "express": "^4.18.1"
-    }
+  "name": "conceito",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+     "dev": "node --watch ./app/index.js 3000",
+     "start": "node ./app/index.js 3000",
+     "build": "npx prisma generate --schema=./app/prisma/schema.prisma"
+  },
+  "author": "Iago Silva Ambrosio",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^4.13.0",
+    "express": "^4.18.2",
+    "prisma": "^4.8.1"
   }
-  
+}
