@@ -1,13 +1,18 @@
-FROM node:18.12.1-alpine3.17
+FROM golang:1.16-alpine AS build
 
-USER node
+RUN apk add --no-cache git
+RUN go get github.com/golang/dep/cmd/dep
+#dependencies install from src dest
+COPY Gopkg.lock Gopkg.toml /home/go/
+WORKDIR /home/go/
+# Install library dependencies
+RUN dep ensure -vendor-only
 
-WORKDIR /home/node
+COPY . /home/go/
+RUN go build -o /bin/main
 
-COPY --chown=node ./api/package.json /home/node/
-
-RUN npm install
-
-COPY --chown=node ./api/ .
-
-ENTRYPOINT npm start
+# This results in a single layer image
+FROM alpine
+COPY --from=build /bin/main /bin/main
+ENTRYPOINT ["/bin/main"]
+CMD ["--help"]
