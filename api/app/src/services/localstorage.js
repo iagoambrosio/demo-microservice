@@ -6,7 +6,10 @@ class localDatabase {
         this.check(this.database)
         this.count = 0
     }
-    check(database){ 
+    check(database){
+      if(process.env.ENV === 'prod'){
+        return 
+      } else {
         if (fs.existsSync(database)) {
             if (this.count === 0)
           { 
@@ -18,7 +21,7 @@ class localDatabase {
             fs.writeFileSync(database,JSON.stringify([]))
             return console.log(`a database ${database} Foi criada !, modo mockup ativo`)
           }
-        
+      }
     }
     write(database,data){
     const temp =  fs.readFileSync(database)

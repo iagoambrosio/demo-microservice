@@ -12,18 +12,26 @@ services:
       - 3306:3306
     networks:
       - api
-  node:
+  api:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.api
+    depends_on:
+      mysql:
+        condition: service_started
     volumes:
       - ./api/app:/home/node/app
     environment:
-      - ENV=dev
+      - ENV=prod
+      - DATABASE_URL=mysql://root:mysqladmin@mysql:3306/api_db
     ports:
       - 3000:3000
     networks:
       - api
+    entrypoint:
+       - npm
+       - run
+       - build
 networks:
   api:
     driver: bridge  

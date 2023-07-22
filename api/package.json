@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
      "dev": "node --watch ./app/index.js 3000",
      "start": "node ./app/index.js 3000",
-     "build": "npx prisma generate --schema=./app/prisma/schema.prisma"
+     "build": "npx prisma generate --schema=./app/prisma/schema.prisma && node ./app/index.js 3000"
   },
   "author": "Iago Silva Ambrosio",
   "license": "ISC",
