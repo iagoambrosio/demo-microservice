@@ -11,14 +11,10 @@ class localDatabase {
         return 
       } else {
         if (fs.existsSync(database)) {
-            if (this.count === 0)
-          { 
             console.log(`a database ${database} Já existe !`)
-
-          }
-            else {return }
           } else {
             fs.writeFileSync(database,JSON.stringify([]))
+            this.count++
             return console.log(`a database ${database} Foi criada !, modo mockup ativo`)
           }
       }
