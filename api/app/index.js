@@ -6,6 +6,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true})) 
 const moduler = require('./src/routes/default')
 const mainPaths = ["/user","/application","/tenant","/status"]
+app.get('/', (req, res) => {res.send('API')})
 // a nível de rota, o use recebe o caminho e manda para o Route do express
 let validator = new Validator()
 app.all(mainPaths, (req, res, next) => {
