@@ -1,17 +1,10 @@
+const database = require('./localstorage')
 class Validator{
-    constructor(path,method,user){
-        this.path = path
-        this.method = method
-        this.user = user
-    }
-
-    ifExists(path,method,user){
-   return console.log(
-    [this.path.find((item) => item === path),this.method.find((item) => item === method),this.user.find((item) => item === user)]
-)
-    }
-    pathMethodUserValidator(path,method,user){
+    constructor(){}
+    search(path,method,user){
+    const usuario = new database('./data').find('./data','name',user)
+    console.log()
 
     }
-
 }
+module.exports = Validator
