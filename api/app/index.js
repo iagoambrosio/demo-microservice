@@ -25,4 +25,5 @@ console.log(process.env.ENV)
 // infra bind and listener
 app.listen(3000)
 app.bind("0.0.0.0")
+
 module.exports = app;
