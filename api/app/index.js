@@ -15,8 +15,8 @@ app.all(mainPaths, (req, res, next) => {
  next()
 },(req,res,next)=>{
 //autenticação e validação
+    console.log("Caminho: "+req.path,"Metodo: "+req.method,"Query: "+req.query.name)
     validator.search(req.path,req.method,req.query.name)
-    console.log("meio")
     next()}, 
 //chama o controller
 moduler
