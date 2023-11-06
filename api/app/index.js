@@ -13,7 +13,7 @@ app.all(mainPaths, (req, res, next) => {
 //url de status
  if(req.path==='/status'){
    let status = new Date().toJSON()
-   res.send(status)
+   return res.send(status)
 }
  next()
 },(req,res,next)=>{
