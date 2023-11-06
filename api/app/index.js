@@ -19,8 +19,9 @@ app.all(mainPaths, (req, res, next) => {
  next()
 },(req,res,next)=>{
 //autenticação e validação
-    console.log("Caminho: "+req.path,"Metodo: "+req.method,"Query: "+req.query.name)
-    validator.search(req.path,req.method,req.query.name)
+    console.log("path: "+req.path,"method: "+req.method,"query: "+req.query.name)
+    const validar = validator.search(req.path,req.method,req.query.name)
+    validar.filter((item===true)=>{return item})
     next()}, 
 //chama o controller
 moduler
