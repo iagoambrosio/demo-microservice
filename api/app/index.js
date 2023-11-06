@@ -9,11 +9,9 @@ const moduler = require('./src/routes/default')
 app.get('/', (req, res) => {res.send('API')})
 // a nível de rota, o use recebe o caminho e manda para o Route do express
 let validator = new Validator()
-app.all(mainPaths, (req, res, next) => {
+app.all(mainPaths[0].all, (req, res, next) => {
 //url de status
- if(req.path==='/status'){
-   let status = new Date().toJSON()
-   console.log(status)
+ if(req.path==='/status'){let status = new Date().toJSON();console.log(status)
    return res.send(status)
 }
  next()
