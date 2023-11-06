@@ -25,7 +25,8 @@ const modify = {
                 console.log("O recurso "+path+" foi Criado!")
               }
                     database[0][path].push(...data)
-                    return data
+                    return JSON.stringify(data.nome) + " - Created"
+                    //return data.map(item => item.nome);
             case 'DELETE':
                     if(Object.keys(query).length === 0){
                     database[0][path] = []
