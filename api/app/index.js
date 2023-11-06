@@ -11,7 +11,10 @@ app.get('/', (req, res) => {res.send('API')})
 let validator = new Validator()
 app.all(mainPaths, (req, res, next) => {
 //url de status
- if(req.path==='/status'){res.send(new Date().toJSON())}
+ if(req.path==='/status'){
+   let status = new Date().toJSON()
+   res.send(status)
+}
  next()
 },(req,res,next)=>{
 //autenticação e validação
