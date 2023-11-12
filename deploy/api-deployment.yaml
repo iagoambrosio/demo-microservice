@@ -17,7 +17,7 @@ spec:
     spec:
       initContainers:
       - name: install
-        image: busybox:1.28
+        image: node:18.12.1-alpine3
         command: ['sh', '-c', "cd /home/node && git clone $REPO_CLONE"]
         env:
           - name: REPO_CLONE
@@ -27,7 +27,7 @@ spec:
         mountPath: "/home/node"
       containers:
       - name: node
-        image: node:18.12.1-alpine3.
+        image: node:18.12.1-alpine3
         command:  ['sh', '-c', "cd /home/node/demo-microservice/api && npm install && npm start"]
         port: 3000
         volumeMounts:
