@@ -19,11 +19,16 @@ app.all(mainPaths[0].all, (req, res, next) => {
  next()
 },(req,res,next)=>{
 //autenticação e validação
-    console.log("path: "+req.path,"method: "+req.method,"query: "+req.query.name)
-    const validar = validator.search(req.path,req.method,req.query.name)
+    console.log("path: "+req.path,"method: "+req.method,"header: "+req.rawHeaders,"query: "+req.query)
+    const validar = validator.search(req.path,req.method,req.header("Authorization"))
+    switch (validar.filter(item => item === true).length){
+    case 3 :
+      return next()
+    default:
+      res.status(401).send("User or password incorrect")
+}
 
-
-    next()}, 
+    }, 
 //chama o controller
 moduler
 )

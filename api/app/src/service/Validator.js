@@ -11,17 +11,22 @@ function gerarToken() {
 class Validator{
     constructor(){
     this.token = gerarToken()
-    if (process.env.ENV===undefined){
+    if (process.env.ENV==='DEV'){
     console.log(this.token)
 }}
     search(path,method,name){
         switch (process.env.ENV) {
             case 'DEV':
               let validatepath = Object.values(paths[0]).find(arr => arr.includes(path));
-              let methodvalidator = Object.keys(paths[0])[Object.values(paths[0]).indexOf(validatepath)]
-              let validatemethod = ()=>{if(methodvalidator==='all'){return 'true'}}
-              //falta realizar a tratativa para o validatepath, assim como o validate method
-            return console.log([validatepath,validatemethod()]);
+              let validateuser = this.token === name
+              let validatormethod = () =>{
+                let methodvalidator = Object.keys(paths[0])[Object.values(paths[0]).indexOf(validatepath)]
+                if (methodvalidator === 'all'){
+                  return true
+                } if (methodvalidator === method){return true}
+                    else {return false}
+              }
+            return [validatepath.length>0,validatormethod(),this.token === name];
 
             case 'PRD':
 
