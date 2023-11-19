@@ -8,7 +8,7 @@ roteador.all(subpaths[0].all,async (req,res)=>{
 return res.send(modify.interacao(req.method,req.body,req.query,req.path.split('/')[1]))
 })
 
-roteador.post(subpaths,async (req,res)=>{
+roteador.post(subpaths[0].POST,async (req,res)=>{
     modify.postDatabase(req.body)
     return res.send(modify.getDatabase())
 })
