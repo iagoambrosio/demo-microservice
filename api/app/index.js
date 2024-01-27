@@ -19,7 +19,7 @@ app.all(mainPaths[0].all, (req, res, next) => {
  next()
 },(req,res,next)=>{
 //autenticação e validação
-    console.log("path: "+req.path,"method: "+req.method,"header: "+req.rawHeaders,"query: "+req.query)
+    console.log("path: "+req.path,"method: "+req.method,"header: "+JSON.stringify(req.headers),"query: "+JSON.stringify(req.query))
     const validar = validator.search(req.path,req.method,req.header("Authorization"))
     switch (validar.filter(item => item === true).length){
     case 3 :
