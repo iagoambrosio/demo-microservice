@@ -5,8 +5,8 @@ metadata:
     deployment.kubernetes.io/revision: "4"
   generation: 6
   labels:
-    app: node
-  name: node
+    app: api
+  name: api
   namespace: api
 spec:
   progressDeadlineSeconds: 600
@@ -14,7 +14,7 @@ spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: node
+      app: api
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -22,8 +22,10 @@ spec:
     type: RollingUpdate
   template:
     metadata:
+      annotations:
+        instrumentation.opentelemetry.io/inject-nodejs: "true"
       labels:
-        app: node
+        app: api
     spec:
       containers:
       - command:
@@ -32,11 +34,11 @@ spec:
         - cd /srv/demo-microservice/api/ && npm install && npm start
         image: node
         imagePullPolicy: Always
-        name: node
+        name: api
         resources:
           limits:
             cpu: "0.5"
-            memory: "200Mi"
+            memory: "250Mi"
           requests:
             cpu: "0.1"
             memory: "20Mi"
