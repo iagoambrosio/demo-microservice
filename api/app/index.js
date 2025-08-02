@@ -13,9 +13,13 @@ console.log(process.env.ENV)
 let validator = new Validator()
 app.all(mainPaths[0].all, (req, res, next) => {
 //url de status
- if(req.path==='/status'){let status = new Date().toJSON();console.log(status)
-   return res.send(status)
-}
+ if(req.path==='/status'){
+   const os = require('os');
+   let status = new Date().toJSON();
+   let serverHost = os.hostname();
+   console.log({ status, serverHost });
+   return res.json({ status, host: serverHost });
+ }
  next()
 },(req,res,next)=>{
 //autenticação e validação
