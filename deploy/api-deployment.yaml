@@ -27,10 +27,15 @@ spec:
       - command:
         - sh
         - -c
-        - cd /srv/demo-microservice/api/ && npm install && npm start
+        - cd /srv/demo-microservice/api/ && npm install && npm run start-prod
         image: node
         imagePullPolicy: Always
         name: api
+        env:
+        - name: DATABASE_URL
+          value: mysql://root:mysqladmin@mysql:3306/api_db
+        - name: ENV
+          value: prod
         resources:
           limits:
             cpu: "0.5"

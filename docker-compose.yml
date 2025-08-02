@@ -12,13 +12,18 @@ services:
       - 3306:3306
     networks:
       - api
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-pmysqladmin"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   api:
     build:
       context: .
       dockerfile: Dockerfile.api
     depends_on:
       mysql:
-        condition: service_started
+        condition: service_healthy
     volumes:
       - ./api/app:/home/node/app
     environment:
@@ -31,7 +36,7 @@ services:
     entrypoint:
        - npm
        - run
-       - build
+       - start-dev
 networks:
   api:
     driver: bridge  

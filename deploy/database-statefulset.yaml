@@ -21,5 +21,11 @@ spec:
         ports:
         - containerPort: 3306
         env:
-        - name: MYSQL_RANDOM_ROOT_PASSWORD
-          value: "true"
+        - name: MYSQL_ROOT_PASSWORD
+          value: "mysqladmin"
+        - name: MYSQL_USER
+          value: "nodeapi"
+        - name: MYSQL_PASSWORD
+          value: "uadareu1234437"
+        - name: MYSQL_DATABASE
+          value: "api_db"

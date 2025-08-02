@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-     "dev": "node --watch ./app/index.js 3000",
-     "start": "node ./app/index.js 3000",
-     "build": "npx prisma generate --schema=./app/prisma/schema.prisma && node ./app/index.js 3000"
+    "dev": "node --watch ./app/index.js 3000",
+    "start": "node ./app/index.js 3000",
+    "build": "npx prisma generate --schema=./app/prisma/schema.prisma",
+    "migrate:prod": "npx prisma migrate deploy --schema=./app/prisma/schema.prisma",
+    "start-prod": "npm run build && npm run migrate:prod && npm start",
+    "start-dev": "npm run build && npm run migrate:prod && npm run dev"
   },
   "author": "Iago Silva Ambrosio",
   "license": "ISC",
