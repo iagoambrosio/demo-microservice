@@ -21,6 +21,6 @@ spec:
         name: mysqld
         ports:
         - containerPort: 3306
-        environment:
+        env:
         - name: MYSQL_RANDOM_ROOT_PASSWORD
           value: true
