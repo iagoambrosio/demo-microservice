@@ -4,7 +4,6 @@ metadata:
   labels:
     app: mysql
   name: mysql
-  namespace: api
 spec:
   serviceName: "mysql-database"
   replicas: 1
