@@ -2,7 +2,7 @@ const roteador = require('express').Router()
 const modify = require('../service/usecases')
 const subpaths = require('../service/restRoutes.js')
 
-
+//curl -X POST http://localhost:3000/tenant -H "Content-Type: application/json"  -d '{"name": "default","description" :  "default" }' 
 //curl -X POST http://localhost:3000/user -H "Content-Type: application/json"  -d '{"name": "linuxize1", "email": "linuxize4@example.c2m", "cel":"11-3232213","tenantName" : "default" }' 
 roteador.all(subpaths[0].all, async (req, res) => {
   try {
